@@ -517,7 +517,11 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#_rest_api">4. REST API</a></li>
 <li><a href="#_web_applications">5. Web Applications</a></li>
-<li><a href="#_using_the_processapplication">6. Using the ProcessApplication</a></li>
+<li><a href="#_using_the_processapplication">6. Using the ProcessApplication</a>
+<ul class="sectlevel2">
+<li><a href="#__enableprocessapplication">6.1. @EnableProcessApplication</a></li>
+</ul>
+</li>
 <li><a href="#properties">7. Camunda application properties</a></li>
 </ul>
 </div>
@@ -965,6 +969,23 @@ This also allows all processes.xml configuration features described here.</p>
 }</code></pre>
 </div>
 </div>
+<div class="sect2">
+<h3 id="__enableprocessapplication">6.1. @EnableProcessApplication</h3>
+<div class="paragraph">
+<p>With 2.0.0, you can now use the @EnableProcessApplication annotation and do not need to extend a configuration manually:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@SpringBootApplication</span>
+<span class="annotation">@EnableProcessApplication</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">myProcessApplicationName</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MyApplication</span> {
+
+...
+
+}</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1150,7 +1171,7 @@ This also allows all processes.xml configuration features described here.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-11-07 19:26:12 +01:00
+Last updated 2016-11-08 14:41:16 +01:00
 </div>
 </div>
 </body>
