@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.2">
-<title>Camunda application properties</title>
+<title>Untitled</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -504,210 +504,25 @@ table.CodeRay td.code>pre{padding:0}
 <div id="header">
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#properties">1. Camunda application properties</a></li>
-</ul>
+
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="properties">1. Camunda application properties</h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Prefix</th>
-<th class="tableblock halign-left valign-top">Property name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>General</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="7"><p class="tableblock"><code>camunda.bpm</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.process-engine-name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">name of the process engine</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.default-serialization-format</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">default serialization format</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.history-level</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">camunda history level</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.history-level-default</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">camunda history level to use when <code>history-level</code> is <code>auto</code> but the level can not determined automatically</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">default value from <code>history-level</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.auto-deployment-enabled</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">if processes should be auto deployed. This is disabled when using the SpringBootProcessApplication</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.version</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">version of the process engine</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">read only value e.g. 7.4.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.formatted-version</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">formatted version of the process engine</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">read only value e.g. (v7.4.0)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Job Execution</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><code>camunda.bpm.job-execution</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.active</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">activate job execution after successful startup</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.enabled</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">if set to <code>false</code>, no JobExecutor bean is created at all. Maybe used for testing.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.deployment-aware</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">if job executor is deployment aware</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.deployment-resource-pattern</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">location for auto deployment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>classpath*:<strong>/<strong>.bpmn, classpath</strong>:</strong>/<strong>.bpmn20.xml, classpath</strong>:<strong>/<strong>.dmn, classpath</strong>:</strong>/<strong>.dmn11.xml, classpath</strong>:<strong>/<strong>.cmmn, classpath</strong>:</strong>/<strong>.cmmn10.xml, classpath</strong>:*<strong>/</strong>.cmmn11.xml</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Datasource</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>camunda.bpm.database</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.schema-update</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">if automatic schema update should be applied, use one of [true, false, create, create-drop, drop-create]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.type</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type of the underlying database</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">'h2', 'oracle', &#8230;&#8203;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.table-prefix</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">prefix of the camunda database tables</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>JPA</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><code>camunda.bpm.jpa</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.enabled</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enables jpa configuration</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code>. Depends on <code>entityManagerFactory</code> bean.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.persistence-unit-name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JPA persistence unit name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.close-entity-manager</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">close JPA entity manager</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.handle-transaction</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JPA handle transaction</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Management</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>camunda.bpm.management</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.health.camunda.enabled</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enables default camunda health indicators</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Metrics</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>camunda.bpm.metrics</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.enabled</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enables metrics reporting</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.db-reporter-activate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enables db metrics reporting</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Webapp</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>camunda.bpm.webapp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.index-redirect-enabled</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">registers a redirect from <code>/</code> to camundas bundled <code>index.html</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Authorization</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>camunda.bpm.authorization</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.enabled</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enables authorization</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.enabled-for-custom-code</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enables authorization for custom code</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.authorization-check-revokes</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">configures authorization check revokes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Admin User</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>camunda.bpm.admin-user</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">the username (e.g. 'admin')</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.password</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">the initial password</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.firstName</code>, <code>.lastName</code>, <code>.email</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">additional (optional) user attributes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">defaults to value of 'id'</p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>Version 2.0.0 requires:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java 8</p>
+</li>
+<li>
+<p>Spring Boot 1.4.x</p>
+</li>
+<li>
+<p>Camunda 7.5.0</p>
+</li>
+</ul>
 </div>
 </div>
 <div id="footer">
