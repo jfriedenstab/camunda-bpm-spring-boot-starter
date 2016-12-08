@@ -507,7 +507,11 @@ table.CodeRay td.code>pre{padding:0}
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_what_is_camunda_bpm_spring_boot_starter">1. What is camunda-bpm-spring-boot-starter?</a></li>
-<li><a href="#_getting_started">2. Getting started</a></li>
+<li><a href="#_getting_started">2. Getting started</a>
+<ul class="sectlevel2">
+<li><a href="#_examples">2.1. Examples</a></li>
+</ul>
+</li>
 <li><a href="#_process_engine_configuration">3. Process engine configuration</a>
 <ul class="sectlevel2">
 <li><a href="#_default_configurations">3.1. Default configurations</a></li>
@@ -517,8 +521,13 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#_rest_api">4. REST API</a></li>
 <li><a href="#_web_applications">5. Web Applications</a></li>
-<li><a href="#_using_the_processapplication">6. Using the ProcessApplication</a></li>
-<li><a href="#properties">7. Camunda application properties</a></li>
+<li><a href="#processapplication">6. Using the ProcessApplication</a>
+<ul class="sectlevel2">
+<li><a href="#__enableprocessapplication">6.1. @EnableProcessApplication</a></li>
+</ul>
+</li>
+<li><a href="#camunda-enterprise">7. Using camunda enterprise</a></li>
+<li><a href="#properties">8. Camunda application properties</a></li>
 </ul>
 </div>
 </div>
@@ -544,18 +553,18 @@ table.CodeRay td.code>pre{padding:0}
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>org.camunda.bpm.extension<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>camunda-bpm-spring-boot-starter<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>1.4.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>2.0.0<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This will add the camunda version <code>7.5.0</code> to your dependencies. If you want to override the version add <code>camunda.version</code> property with the camunda version you want to use and add the camunda bom to the dependency management:</p>
+<p>This will add the camunda version <code>7.6.0</code> to your dependencies. If you want to override the version add <code>camunda.version</code> property with the camunda version you want to use and add the camunda bom to the dependency management:</p>
 </div>
 <div class="listingblock">
 <div class="title">pom.xml</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
-  <span class="tag">&lt;camunda.version&gt;</span>7.5.0<span class="tag">&lt;/camunda.version&gt;</span>
+  <span class="tag">&lt;camunda.version&gt;</span>7.6.0<span class="tag">&lt;/camunda.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 
 <span class="tag">&lt;dependencyManagement&gt;</span>
@@ -570,6 +579,23 @@ table.CodeRay td.code>pre{padding:0}
     <span class="tag">&lt;/dependency&gt;</span>
   <span class="tag">&lt;/dependencies&gt;</span>
 <span class="tag">&lt;/dependencyManagement&gt;</span></code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples">2.1. Examples</h3>
+<div class="paragraph">
+<p>You can find examples to learn the usage of the camunda bpm starter
+ here:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/osteinhauer/camunda-spring-boot-starter-examples" class="bare">https://github.com/osteinhauer/camunda-spring-boot-starter-examples</a></p>
+</li>
+<li>
+<p><a href="https://github.com/camunda/camunda-bpm-spring-boot-starter/issues" class="bare">https://github.com/camunda/camunda-bpm-spring-boot-starter/issues</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -846,7 +872,7 @@ The resource pattern can be changed using properties (see <a href="#properties">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>org.camunda.bpm.extension<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>camunda-bpm-spring-boot-starter-rest<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>1.4.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>2.0.0<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -888,7 +914,7 @@ The resource pattern can be changed using properties (see <a href="#properties">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>org.camunda.bpm.extension<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>camunda-bpm-spring-boot-starter-webapp<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>1.4.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>2.0.0<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -944,7 +970,7 @@ To disable this you have to add <code>camunda.bpm.webapp.index-redirect-enabled=
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_the_processapplication">6. Using the ProcessApplication</h2>
+<h2 id="processapplication">6. Using the ProcessApplication</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>By default, the camunda-spring-boot-starter is configured to use the SpringProcessEngineConfiguration auto deployment feature.
@@ -965,10 +991,47 @@ This also allows all processes.xml configuration features described here.</p>
 }</code></pre>
 </div>
 </div>
+<div class="sect2">
+<h3 id="__enableprocessapplication">6.1. @EnableProcessApplication</h3>
+<div class="paragraph">
+<p>With 2.0.0, you can now use the @EnableProcessApplication annotation and do not need to extend a configuration manually:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@SpringBootApplication</span>
+<span class="annotation">@EnableProcessApplication</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">myProcessApplicationName</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MyApplication</span> {
+
+...
+
+}</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="properties">7. Camunda application properties</h2>
+<h2 id="camunda-enterprise">7. Using camunda enterprise</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With 2.0.0 some enhancements for usage of camunda-spring-boot-starter and
+the camunda enterprise webapp.</p>
+</div>
+<div class="paragraph">
+<p>Have a look at the example-webapp-ee <a href="https://github.com/camunda/camunda-bpm-spring-boot-starter/tree/master/examples/example-webapp-ee" class="bare">https://github.com/camunda/camunda-bpm-spring-boot-starter/tree/master/examples/example-webapp-ee</a>.</p>
+</div>
+<div class="paragraph">
+<p>To enable the project, run maven with the <code>-Penterprise</code> flag.</p>
+</div>
+<div class="paragraph">
+<p>If using enterprise, you can also use the <code>camunda.bpm.license-file</code> property to provide a license file
+that is inserted on application start. Or copy your license file under the name <code>camunda-license.txt</code>
+ to your <code>src/main/resources</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="properties">8. Camunda application properties</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -990,7 +1053,7 @@ This also allows all processes.xml configuration features described here.</p>
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>General</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="7"><p class="tableblock"><code>camunda.bpm</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="8"><p class="tableblock"><code>camunda.bpm</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.process-engine-name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">name of the process engine</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
@@ -1016,6 +1079,11 @@ This also allows all processes.xml configuration features described here.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.license-file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provide an URL to your camunda license file and is automatically inserted to the DB when the application starts (but only if no license key is found in the DB).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.version</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">version of the process engine</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">read only value e.g. 7.4.0</p></td>
@@ -1029,7 +1097,7 @@ This also allows all processes.xml configuration features described here.</p>
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Job Execution</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><code>camunda.bpm.job-execution</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="5"><p class="tableblock"><code>camunda.bpm.job-execution</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.active</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">activate job execution after successful startup</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
@@ -1050,6 +1118,11 @@ This also allows all processes.xml configuration features described here.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>classpath*:<strong>/<strong>.bpmn, classpath</strong>:</strong>/<strong>.bpmn20.xml, classpath</strong>:<strong>/<strong>.dmn, classpath</strong>:</strong>/<strong>.dmn11.xml, classpath</strong>:<strong>/<strong>.cmmn, classpath</strong>:</strong>/<strong>.cmmn10.xml, classpath</strong>:*<strong>/</strong>.cmmn11.xml</code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.core-pool-size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set to value &gt; 1 to activate parallel job execution.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Datasource</strong></p></td>
 </tr>
 <tr>
@@ -1065,7 +1138,7 @@ This also allows all processes.xml configuration features described here.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.table-prefix</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">prefix of the camunda database tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prefix of the camunda database tables. Attention: The table prefix will <strong>not</strong> be applied if you  are using <code>schema-update</code>!</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
 </tr>
 <tr>
@@ -1143,6 +1216,34 @@ This also allows all processes.xml configuration features described here.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">configures authorization check revokes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Admin User</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>camunda.bpm.admin-user</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the username (e.g. 'admin')</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the initial password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.firstName</code>, <code>.lastName</code>, <code>.email</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">additional (optional) user attributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">defaults to value of 'id'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Filter</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>camunda.bpm.filter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.create</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of a "show all filter". If set, on start a new filter will be created that displayes all tasks. Useful for testing on h2 db.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1150,7 +1251,7 @@ This also allows all processes.xml configuration features described here.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-09-08 15:46:27 +02:00
+Last updated 2016-12-08 14:13:08 +01:00
 </div>
 </div>
 </body>
