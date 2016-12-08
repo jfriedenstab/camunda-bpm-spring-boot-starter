@@ -1138,7 +1138,7 @@ that is inserted on application start. Or copy your license file under the name 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.table-prefix</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">prefix of the camunda database tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prefix of the camunda database tables. Attention: The table prefix will <strong>not</strong> be applied if you  are using <code>schema-update</code>!</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
 </tr>
 <tr>
@@ -1235,6 +1235,15 @@ that is inserted on application start. Or copy your license file under the name 
 <td class="tableblock halign-left valign-top"><p class="tableblock">additional (optional) user attributes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">defaults to value of 'id'</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Filter</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>camunda.bpm.filter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.create</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of a "show all filter". If set, on start a new filter will be created that displayes all tasks. Useful for testing on h2 db.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1242,7 +1251,7 @@ that is inserted on application start. Or copy your license file under the name 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-08 12:16:14 +01:00
+Last updated 2016-12-08 12:26:24 +01:00
 </div>
 </div>
 </body>
