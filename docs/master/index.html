@@ -521,12 +521,13 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#_rest_api">4. REST API</a></li>
 <li><a href="#_web_applications">5. Web Applications</a></li>
-<li><a href="#_using_the_processapplication">6. Using the ProcessApplication</a>
+<li><a href="#processapplication">6. Using the ProcessApplication</a>
 <ul class="sectlevel2">
 <li><a href="#__enableprocessapplication">6.1. @EnableProcessApplication</a></li>
 </ul>
 </li>
-<li><a href="#properties">7. Camunda application properties</a></li>
+<li><a href="#camunda-enterprise">7. Using camunda enterprise</a></li>
+<li><a href="#properties">8. Camunda application properties</a></li>
 </ul>
 </div>
 </div>
@@ -969,7 +970,7 @@ To disable this you have to add <code>camunda.bpm.webapp.index-redirect-enabled=
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_the_processapplication">6. Using the ProcessApplication</h2>
+<h2 id="processapplication">6. Using the ProcessApplication</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>By default, the camunda-spring-boot-starter is configured to use the SpringProcessEngineConfiguration auto deployment feature.
@@ -1010,7 +1011,27 @@ This also allows all processes.xml configuration features described here.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="properties">7. Camunda application properties</h2>
+<h2 id="camunda-enterprise">7. Using camunda enterprise</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With 2.0.0 some enhancements for usage of camunda-spring-boot-starter and
+the camunda enterprise webapp.</p>
+</div>
+<div class="paragraph">
+<p>Have a look at the example-webapp-ee <a href="https://github.com/camunda/camunda-bpm-spring-boot-starter/tree/master/examples/example-webapp-ee" class="bare">https://github.com/camunda/camunda-bpm-spring-boot-starter/tree/master/examples/example-webapp-ee</a>.</p>
+</div>
+<div class="paragraph">
+<p>To enable the project, run maven with the <code>-Penterprise</code> flag.</p>
+</div>
+<div class="paragraph">
+<p>If using enterprise, you can also use the <code>camunda.bpm.license-file</code> property to provide a license file
+that is inserted on application start. Or copy your license file under the name <code>camunda-license.txt</code>
+ to your <code>src/main/resources</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="properties">8. Camunda application properties</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1032,7 +1053,7 @@ This also allows all processes.xml configuration features described here.</p>
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>General</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="7"><p class="tableblock"><code>camunda.bpm</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="8"><p class="tableblock"><code>camunda.bpm</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.process-engine-name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">name of the process engine</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
@@ -1058,6 +1079,11 @@ This also allows all processes.xml configuration features described here.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.license-file</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provide an URL to your camunda license file and is automatically inserted to the DB when the application starts (but only if no license key is found in the DB).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.version</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">version of the process engine</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">read only value e.g. 7.4.0</p></td>
@@ -1071,7 +1097,7 @@ This also allows all processes.xml configuration features described here.</p>
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Job Execution</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><code>camunda.bpm.job-execution</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="5"><p class="tableblock"><code>camunda.bpm.job-execution</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.active</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">activate job execution after successful startup</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
@@ -1090,6 +1116,11 @@ This also allows all processes.xml configuration features described here.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.deployment-resource-pattern</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">location for auto deployment</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>classpath*:<strong>/<strong>.bpmn, classpath</strong>:</strong>/<strong>.bpmn20.xml, classpath</strong>:<strong>/<strong>.dmn, classpath</strong>:</strong>/<strong>.dmn11.xml, classpath</strong>:<strong>/<strong>.cmmn, classpath</strong>:</strong>/<strong>.cmmn10.xml, classpath</strong>:*<strong>/</strong>.cmmn11.xml</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.core-pool-size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set to value &gt; 1 to activate parallel job execution.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Datasource</strong></p></td>
@@ -1211,7 +1242,7 @@ This also allows all processes.xml configuration features described here.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-08 10:31:11 +01:00
+Last updated 2016-12-08 11:06:13 +01:00
 </div>
 </div>
 </body>
