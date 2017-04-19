@@ -527,7 +527,12 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#__enableprocessapplication">7.1. @EnableProcessApplication</a></li>
 </ul>
 </li>
-<li><a href="#camunda-enterprise">8. Using camunda enterprise</a></li>
+<li><a href="#camunda-enterprise">8. Using camunda enterprise</a>
+<ul class="sectlevel2">
+<li><a href="#_maven">8.1. Maven</a></li>
+<li><a href="#_gradle">8.2. Gradle</a></li>
+</ul>
+</li>
 <li><a href="#properties">9. Camunda application properties</a></li>
 </ul>
 </div>
@@ -1044,19 +1049,25 @@ This also allows all processes.xml configuration features described here.</p>
 <p>With 2.0.0 some enhancements for usage of camunda-spring-boot-starter and
 the camunda enterprise webapp.</p>
 </div>
+<div class="sect2">
+<h3 id="_maven">8.1. Maven</h3>
 <div class="paragraph">
 <p>Have a look at the example-webapp-ee <a href="https://github.com/camunda/camunda-bpm-spring-boot-starter/tree/master/examples/example-webapp-ee" class="bare">https://github.com/camunda/camunda-bpm-spring-boot-starter/tree/master/examples/example-webapp-ee</a>.</p>
 </div>
 <div class="paragraph">
 <p>To enable the project, run maven with the <code>-Penterprise</code> flag.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_gradle">8.2. Gradle</h3>
+<div class="paragraph">
+<p>Have a look at the example-webapp-ee-gradle <a href="https://github.com/&#8230;&#8203" class="bare">https://github.com/&#8230;&#8203</a>;.</p>
+</div>
 <div class="paragraph">
 <p>If using enterprise, you can also use the <code>camunda.bpm.license-file</code> property to provide a license file
 that is inserted on application start. Or copy your license file under the name <code>camunda-license.txt</code>
  to your <code>src/main/resources</code>.</p>
 </div>
-<div class="paragraph">
-<p>Attention: due to the nature of the maven build plugin, using the enterprise edition webjar is currently not supported if you use gradle!</p>
 </div>
 </div>
 </div>
@@ -1286,7 +1297,7 @@ that is inserted on application start. Or copy your license file under the name 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-19 11:16:14 +02:00
+Last updated 2017-04-19 11:31:14 +02:00
 </div>
 </div>
 </body>
