@@ -507,27 +507,33 @@ table.CodeRay td.code>pre{padding:0}
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_what_is_camunda_bpm_spring_boot_starter">1. What is camunda-bpm-spring-boot-starter?</a></li>
-<li><a href="#_getting_started">2. Getting started</a>
+<li><a href="#_known_issues">2. Known issues</a></li>
+<li><a href="#_getting_started">3. Getting started</a>
 <ul class="sectlevel2">
-<li><a href="#_examples">2.1. Examples</a></li>
+<li><a href="#_examples">3.1. Examples</a></li>
 </ul>
 </li>
-<li><a href="#_process_engine_configuration">3. Process engine configuration</a>
+<li><a href="#_process_engine_configuration">4. Process engine configuration</a>
 <ul class="sectlevel2">
-<li><a href="#_default_configurations">3.1. Default configurations</a></li>
-<li><a href="#_overriding_a_default_configuration">3.2. Overriding a default configuration</a></li>
-<li><a href="#_adding_additional_configurations">3.3. Adding additional configurations</a></li>
+<li><a href="#_default_configurations">4.1. Default configurations</a></li>
+<li><a href="#_overriding_a_default_configuration">4.2. Overriding a default configuration</a></li>
+<li><a href="#_adding_additional_configurations">4.3. Adding additional configurations</a></li>
 </ul>
 </li>
-<li><a href="#_rest_api">4. REST API</a></li>
-<li><a href="#_web_applications">5. Web Applications</a></li>
-<li><a href="#processapplication">6. Using the ProcessApplication</a>
+<li><a href="#_rest_api">5. REST API</a></li>
+<li><a href="#_web_applications">6. Web Applications</a></li>
+<li><a href="#processapplication">7. Using the ProcessApplication</a>
 <ul class="sectlevel2">
-<li><a href="#__enableprocessapplication">6.1. @EnableProcessApplication</a></li>
+<li><a href="#__enableprocessapplication">7.1. @EnableProcessApplication</a></li>
 </ul>
 </li>
-<li><a href="#camunda-enterprise">7. Using camunda enterprise</a></li>
-<li><a href="#properties">8. Camunda application properties</a></li>
+<li><a href="#camunda-enterprise">8. Using camunda enterprise</a>
+<ul class="sectlevel2">
+<li><a href="#_maven">8.1. Maven</a></li>
+<li><a href="#_gradle">8.2. Gradle</a></li>
+</ul>
+</li>
+<li><a href="#properties">9. Camunda application properties</a></li>
 </ul>
 </div>
 </div>
@@ -535,11 +541,37 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect1">
 <h2 id="_what_is_camunda_bpm_spring_boot_starter">1. What is camunda-bpm-spring-boot-starter?</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Spring starters allow to enable behavior of your spring-boot application by adding dependencies
+to the classpath.</p>
+</div>
+<div class="paragraph">
+<p>These starters will pre-configure camunda process engine, rest-api and webapp so
+they can easily be used in a standalone process application.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_getting_started">2. Getting started</h2>
+<h2 id="_known_issues">2. Known issues</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>camunda-bpm-spring-boot-starter-test</code> used to also reference <code>camunda-bpm-assert</code>.<br>
+After switching to spring-boot v1.5.2, this was not possible because v1.5.2 brings a dependency<br>
+to assertj-core 2.6.0 which is no longer compatible to the outdated version used in the test-extension.<br>
+That&#8217;s why we now include the bpm-assert classes directly and compile them with the starter.<br></p>
+<div class="paragraph">
+<p><strong>Attention:</strong> This means you must <strong>not</strong> add an additional dependency on <code>camunda-bpm-assert</code> when you<br>
+ use the <code>camunda-bpm-spring-boot-starter-test</code> in your test scope! This hopefully will change with following versions.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_started">3. Getting started</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If you are not familiar with <a href="http://projects.spring.io/spring-boot/" target="_blank">Spring Boot</a> read the reference documentation <a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#getting-started" target="_blank">getting started</a> guide.</p>
@@ -551,9 +583,9 @@ table.CodeRay td.code>pre{padding:0}
 <div class="title">pom.xml</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>org.camunda.bpm.extension<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.camunda.bpm.extension.springboot<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>camunda-bpm-spring-boot-starter<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>2.1.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>2.1.0<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -582,7 +614,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="_examples">2.1. Examples</h3>
+<h3 id="_examples">3.1. Examples</h3>
 <div class="paragraph">
 <p>You can find examples to learn the usage of the camunda bpm starter
  here:</p>
@@ -601,7 +633,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect1">
-<h2 id="_process_engine_configuration">3. Process engine configuration</h2>
+<h2 id="_process_engine_configuration">4. Process engine configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The auto starter uses the  <code>org.camunda.bpm.engine.impl.cfg.ProcessEnginePlugin</code> mechanism to configure the engine.</p>
@@ -638,18 +670,18 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_default_configurations">3.1. Default configurations</h3>
+<h3 id="_default_configurations">4.1. Default configurations</h3>
 <div class="paragraph">
 <p>The following default and best practice configurations are provided by the starter and can be customized or overridden if you like to.</p>
 </div>
 <div class="sect3">
-<h4 id="__code_defaultprocessengineconfiguration_code">3.1.1. <code>DefaultProcessEngineConfiguration</code></h4>
+<h4 id="__code_defaultprocessengineconfiguration_code">4.1.1. <code>DefaultProcessEngineConfiguration</code></h4>
 <div class="paragraph">
 <p>Sets the process engine name and automatically adds all <code>ProcessEnginePlugin</code> beans to the configuration.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="__code_defaultdatasourceconfiguration_code">3.1.2. <code>DefaultDatasourceConfiguration</code></h4>
+<h4 id="__code_defaultdatasourceconfiguration_code">4.1.2. <code>DefaultDatasourceConfiguration</code></h4>
 <div class="paragraph">
 <p>Applies the datasource and transaction management configurations to the process engine.
 If you want to <a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-two-datasources" target="_blank">configure more than one datasource</a> and don&#8217;t want to use the <code>@Primary</code> one for the process engine then name the one you want to use as <code>camundaBpmDataSource</code>.</p>
@@ -684,7 +716,7 @@ When using <code>history-level auto</code> with more then one database and camun
 </div>
 </div>
 <div class="sect3">
-<h4 id="__code_defaulthistoryconfiguration_code">3.1.3. <code>DefaultHistoryConfiguration</code></h4>
+<h4 id="__code_defaulthistoryconfiguration_code">4.1.3. <code>DefaultHistoryConfiguration</code></h4>
 <div class="paragraph">
 <p>Applies the history configuration to the process engine. If not configured the <code>camunda</code> default level will be used.
 If you want to use a custom <code>HistoryEventHandler</code> you just have to provide a bean implementing the interface.</p>
@@ -699,7 +731,7 @@ If you want to use a custom <code>HistoryEventHandler</code> you just have to pr
 </div>
 </div>
 <div class="sect3">
-<h4 id="__code_defaulthistorylevelautohandlingconfiguration_code">3.1.4. <code>DefaultHistoryLevelAutoHandlingConfiguration</code></h4>
+<h4 id="__code_defaulthistorylevelautohandlingconfiguration_code">4.1.4. <code>DefaultHistoryLevelAutoHandlingConfiguration</code></h4>
 <div class="paragraph">
 <p>As camunda version &gt;= 7.4 supports <code>history-level auto</code> this configuration adds support for versions &lt; = 7.3.</p>
 </div>
@@ -727,7 +759,7 @@ The default configuration is applied after all other default configurations usin
 </div>
 </div>
 <div class="sect3">
-<h4 id="__code_defaultjobconfiguration_code">3.1.5. <code>DefaultJobConfiguration</code></h4>
+<h4 id="__code_defaultjobconfiguration_code">4.1.5. <code>DefaultJobConfiguration</code></h4>
 <div class="paragraph">
 <p>Applies the job execution properties to the process engine.</p>
 </div>
@@ -762,27 +794,27 @@ This is done after the spring context successfully loaded (see <code>org.camunda
 </div>
 </div>
 <div class="sect3">
-<h4 id="__code_defaultdeploymentconfiguration_code">3.1.6. <code>DefaultDeploymentConfiguration</code></h4>
+<h4 id="__code_defaultdeploymentconfiguration_code">4.1.6. <code>DefaultDeploymentConfiguration</code></h4>
 <div class="paragraph">
 <p>If auto deployment is enabled (this is by default) all process found in the classpath will be deployed.
 The resource pattern can be changed using properties (see <a href="#properties">Camunda application properties</a>).</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="__code_defaultjpaconfiguration_code">3.1.7. <code>DefaultJpaConfiguration</code></h4>
+<h4 id="__code_defaultjpaconfiguration_code">4.1.7. <code>DefaultJpaConfiguration</code></h4>
 <div class="paragraph">
 <p>If JPA is enabled and a <code>entityManagerFactory</code> bean is configured the process engine will be enabled to use JPA (see <a href="#properties">Camunda application properties</a>).</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="__code_defaultauthorizationconfiguration_code">3.1.8. <code>DefaultAuthorizationConfiguration</code></h4>
+<h4 id="__code_defaultauthorizationconfiguration_code">4.1.8. <code>DefaultAuthorizationConfiguration</code></h4>
 <div class="paragraph">
 <p>Applies the authorization configuration to the process engine. If not configured the <code>camunda</code> default values will be used (see <a href="#properties">Camunda application properties</a>).</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_overriding_a_default_configuration">3.2. Overriding a default configuration</h3>
+<h3 id="_overriding_a_default_configuration">4.2. Overriding a default configuration</h3>
 <div class="paragraph">
 <p>Provide a bean implementing one of the marker interfaces. For example to customize the datasource configuration:</p>
 </div>
@@ -801,7 +833,7 @@ The resource pattern can be changed using properties (see <a href="#properties">
 </div>
 </div>
 <div class="sect2">
-<h3 id="_adding_additional_configurations">3.3. Adding additional configurations</h3>
+<h3 id="_adding_additional_configurations">4.3. Adding additional configurations</h3>
 <div class="paragraph">
 <p>You just have to provide one or more beans implementing the <code>org.camunda.bpm.engine.impl.cfg.ProcessEnginePlugin</code> interface (or extend from <code>org.camunda.bpm.spring.boot.starter.configuration.impl.AbstractCamundaConfiguration</code>). The configurations are applied ordered using the spring ordering mechanism (<code>@Order</code> annotation and <code>Ordered</code> interface). So if you want that your configuration is applied before the default configurations add a <code>@Order(Ordering.DEFAULT_ORDER - 1)</code> annotation to your class. If you want that your configuration is applied after the default configurations add a <code>@Order(Ordering.DEFAULT_ORDER + 1)</code> annotation to your class.</p>
 </div>
@@ -861,23 +893,23 @@ The resource pattern can be changed using properties (see <a href="#properties">
 </div>
 </div>
 <div class="sect1">
-<h2 id="_rest_api">4. REST API</h2>
+<h2 id="_rest_api">5. REST API</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To enable <a href="https://docs.camunda.org/manual/7.5/reference/rest/" target="_blank">REST API</a> you can use</p>
+<p>To enable <a href="https://docs.camunda.org/manual/7.6/reference/rest/" target="_blank">REST API</a> you can use</p>
 </div>
 <div class="listingblock">
 <div class="title">pom.xml</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>org.camunda.bpm.extension<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.camunda.bpm.extension.springboot<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>camunda-bpm-spring-boot-starter-rest<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>2.1.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>2.1.0<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>By default the application path is <code>rest</code>.</p>
+<p>By default the application path is <code>rest</code>, so without any further configuration you can access the api at <a href="http://localhost:8080/rest/engine" class="bare">http://localhost:8080/rest/engine</a></p>
 </div>
 <div class="paragraph">
 <p>Because we are using jersey one can use spring boot&#8217;s <a href="http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html">common application properties</a>. For example to change the application path use <code>spring.jersey.application-path=myapplicationpath</code>.</p>
@@ -902,7 +934,7 @@ The resource pattern can be changed using properties (see <a href="#properties">
 </div>
 </div>
 <div class="sect1">
-<h2 id="_web_applications">5. Web Applications</h2>
+<h2 id="_web_applications">6. Web Applications</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To enable <a href="https://docs.camunda.org/manual/7.4/webapps/" target="_blank">Web Applications</a>
@@ -912,9 +944,9 @@ The resource pattern can be changed using properties (see <a href="#properties">
 <div class="title">pom.xml</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>org.camunda.bpm.extension<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.camunda.bpm.extension.springboot<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>camunda-bpm-spring-boot-starter-webapp<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>2.1.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>2.1.0<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -970,7 +1002,7 @@ To disable this you have to add <code>camunda.bpm.webapp.index-redirect-enabled=
 </div>
 </div>
 <div class="sect1">
-<h2 id="processapplication">6. Using the ProcessApplication</h2>
+<h2 id="processapplication">7. Using the ProcessApplication</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>By default, the camunda-spring-boot-starter is configured to use the SpringProcessEngineConfiguration auto deployment feature.
@@ -992,7 +1024,7 @@ This also allows all processes.xml configuration features described here.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="__enableprocessapplication">6.1. @EnableProcessApplication</h3>
+<h3 id="__enableprocessapplication">7.1. @EnableProcessApplication</h3>
 <div class="paragraph">
 <p>With 2.0.0, you can now use the @EnableProcessApplication annotation and do not need to extend a configuration manually:</p>
 </div>
@@ -1011,17 +1043,25 @@ This also allows all processes.xml configuration features described here.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="camunda-enterprise">7. Using camunda enterprise</h2>
+<h2 id="camunda-enterprise">8. Using camunda enterprise</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>With 2.0.0 some enhancements for usage of camunda-spring-boot-starter and
 the camunda enterprise webapp.</p>
 </div>
+<div class="sect2">
+<h3 id="_maven">8.1. Maven</h3>
 <div class="paragraph">
 <p>Have a look at the example-webapp-ee <a href="https://github.com/camunda/camunda-bpm-spring-boot-starter/tree/master/examples/example-webapp-ee" class="bare">https://github.com/camunda/camunda-bpm-spring-boot-starter/tree/master/examples/example-webapp-ee</a>.</p>
 </div>
 <div class="paragraph">
 <p>To enable the project, run maven with the <code>-Penterprise</code> flag.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gradle">8.2. Gradle</h3>
+<div class="paragraph">
+<p>Have a look at the example-webapp-ee-gradle <a href="https://github.com/&#8230;&#8203" class="bare">https://github.com/&#8230;&#8203</a>;.</p>
 </div>
 <div class="paragraph">
 <p>If using enterprise, you can also use the <code>camunda.bpm.license-file</code> property to provide a license file
@@ -1030,8 +1070,9 @@ that is inserted on application start. Or copy your license file under the name 
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="properties">8. Camunda application properties</h2>
+<h2 id="properties">9. Camunda application properties</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1053,7 +1094,7 @@ that is inserted on application start. Or copy your license file under the name 
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>General</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="8"><p class="tableblock"><code>camunda.bpm</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="9"><p class="tableblock"><code>camunda.bpm</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.process-engine-name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">name of the process engine</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
@@ -1082,6 +1123,11 @@ that is inserted on application start. Or copy your license file under the name 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.license-file</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Provide an URL to your camunda license file and is automatically inserted to the DB when the application starts (but only if no license key is found in the DB).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.id-generator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">configure idGenerator. Allowed values: <code>simple</code>, <code>strong</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>simple</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.version</code></p></td>
@@ -1251,7 +1297,7 @@ that is inserted on application start. Or copy your license file under the name 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-08 14:30:51 +01:00
+Last updated 2017-04-24 17:13:57 +02:00
 </div>
 </div>
 </body>
