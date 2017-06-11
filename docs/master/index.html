@@ -1088,7 +1088,12 @@ that is inserted on application start. Or copy your license file under the name 
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>General</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="9"><p class="tableblock"><code>camunda.bpm</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="10"><p class="tableblock"><code>camunda.bpm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">switch to disable the camunda auto-configuration. Use to exclude camunda in integration tests.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.process-engine-name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">name of the process engine</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
@@ -1241,7 +1246,7 @@ that is inserted on application start. Or copy your license file under the name 
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Authorization</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>camunda.bpm.authorization</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><code>camunda.bpm.authorization</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">enables authorization</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
@@ -1255,6 +1260,11 @@ that is inserted on application start. Or copy your license file under the name 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.authorization-check-revokes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">configures authorization check revokes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.tenant-check-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Performs tenant checks to ensure that an authenticated user can only access data that belongs to one of his tenants.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Admin User</strong></p></td>
@@ -1405,7 +1415,7 @@ that is inserted on application start. Or copy your license file under the name 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-11 01:16:14 +02:00
+Last updated 2017-06-11 02:31:20 +02:00
 </div>
 </div>
 </body>
