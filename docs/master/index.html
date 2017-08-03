@@ -1171,7 +1171,7 @@ that is inserted on application start. Or copy your license file under the name 
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Datasource</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>camunda.bpm.database</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><code>camunda.bpm.database</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.schema-update</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">if automatic schema update should be applied, use one of [true, false, create, create-drop, drop-create]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
@@ -1184,7 +1184,12 @@ that is inserted on application start. Or copy your license file under the name 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.table-prefix</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">prefix of the camunda database tables. Attention: The table prefix will <strong>not</strong> be applied if you  are using <code>schema-update</code>!</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">camunda default value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>camunda default value</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.schema-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the dataBase schema name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>camunda default value</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>JPA</strong></p></td>
@@ -1415,7 +1420,7 @@ that is inserted on application start. Or copy your license file under the name 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-02 09:26:16 +02:00
+Last updated 2017-08-03 09:11:14 +02:00
 </div>
 </div>
 </body>
