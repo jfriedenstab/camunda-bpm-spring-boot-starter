@@ -1038,6 +1038,27 @@ This also allows all processes.xml configuration features described here.</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_using_deployment_callbacks">6.1.2. Using deployment callbacks</h4>
+<div class="paragraph">
+<p>As when using <code>@EnableProcessApplication</code> we don&#8217;t extend <code>ProcessApplication</code> class,
+we can&#8217;t use <code>@PostDeploy</code> and <code>@PreUndeploy</code> method annotations. Instead these callbacks
+ are provided via Spring event publishing mechanism. So you can use the following event listeners:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@EventListener</span>
+<span class="directive">public</span> <span class="type">void</span> onPostDeploy(PostDeployEvent event) {
+  ...
+}
+
+<span class="annotation">@EventListener</span>
+<span class="directive">public</span> <span class="type">void</span> onPreUndeploy(PreUndeployEvent event) {
+  ...
+}</code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="camunda-enterprise">6.2. Using camunda enterprise</h3>
@@ -1420,7 +1441,7 @@ that is inserted on application start. Or copy your license file under the name 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-08 16:41:49 +02:00
+Last updated 2017-08-08 17:21:15 +02:00
 </div>
 </div>
 </body>
