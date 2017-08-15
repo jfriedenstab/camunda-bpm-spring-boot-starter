@@ -1110,7 +1110,7 @@ that is inserted on application start. Or copy your license file under the name 
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>General</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="10"><p class="tableblock"><code>camunda.bpm</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="11"><p class="tableblock"><code>camunda.bpm</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">switch to disable the camunda auto-configuration. Use to exclude camunda in integration tests.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
@@ -1161,10 +1161,15 @@ that is inserted on application start. Or copy your license file under the name 
 <td class="tableblock halign-left valign-top"><p class="tableblock">read only value e.g. (v7.4.0)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.deployment-resource-pattern</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">location for auto deployment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>classpath*:<strong>/<strong>.bpmn, classpath</strong>:</strong>/<strong>.bpmn20.xml, classpath</strong>:<strong>/<strong>.dmn, classpath</strong>:</strong>/<strong>.dmn11.xml, classpath</strong>:<strong>/<strong>.cmmn, classpath</strong>:</strong>/<strong>.cmmn10.xml, classpath</strong>:*<strong>/</strong>.cmmn11.xml</code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top" colspan="4"><p class="tableblock"><strong>Job Execution</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="5"><p class="tableblock"><code>camunda.bpm.job-execution</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><code>camunda.bpm.job-execution</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.active</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">activate job execution after successful startup</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
@@ -1178,11 +1183,6 @@ that is inserted on application start. Or copy your license file under the name 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.deployment-aware</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">if job executor is deployment aware</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.deployment-resource-pattern</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">location for auto deployment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>classpath*:<strong>/<strong>.bpmn, classpath</strong>:</strong>/<strong>.bpmn20.xml, classpath</strong>:<strong>/<strong>.dmn, classpath</strong>:</strong>/<strong>.dmn11.xml, classpath</strong>:<strong>/<strong>.cmmn, classpath</strong>:</strong>/<strong>.cmmn10.xml, classpath</strong>:*<strong>/</strong>.cmmn11.xml</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.core-pool-size</code></p></td>
@@ -1474,7 +1474,7 @@ that is inserted on application start. Or copy your license file under the name 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-09 21:08:32 +02:00
+Last updated 2017-08-15 16:46:14 +02:00
 </div>
 </div>
 </body>
