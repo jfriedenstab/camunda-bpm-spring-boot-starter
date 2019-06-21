@@ -1,8 +1,9 @@
 /*
- * Copyright © 2015-2018 camunda services GmbH and various authors (info@camunda.com)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
+ * Copyright Camunda Services GmbH and/or licensed to Camunda Services GmbH
+ * under one or more contributor license agreements. See the NOTICE file
+ * distributed with this work for additional information regarding copyright
+ * ownership. Camunda licenses this file to you under the Apache License,
+ * Version 2.0; you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
@@ -35,12 +36,14 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.context.ApplicationContext;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(LazyInitRegistration.class)
+@PowerMockIgnore({"com.sun.org.apache.xerces.*", "javax.xml.*", "org.xml.*"})
 public class LazyInitRegistrationTest {
 
   @Mock
@@ -152,7 +155,7 @@ public class LazyInitRegistrationTest {
     new LazyInitRegistration().setApplicationContext(applicationContextMock);
 
     assertEquals(LazyInitRegistration.APPLICATION_CONTEXT, applicationContextMock);
-    PowerMockito.verifyStatic();
+    PowerMockito.verifyStatic(LazyInitRegistration.class);
     LazyInitRegistration.lazyInit(lazyDelegateFilterMock);
   }
 }

@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.camunda</groupId>
     <artifactId>camunda-release-parent</artifactId>
-    <version>3.2</version>
+    <version>3.3</version>
     <!-- DO NOT REMOVE EMPTY TAG https://issues.apache.org/jira/browse/MNG-4687 -->
     <relativePath />
   </parent>
@@ -12,7 +12,7 @@
   <groupId>org.camunda.bpm.springboot.project</groupId>
   <artifactId>camunda-bpm-spring-boot-starter-root</artifactId>
   <inceptionYear>2015</inceptionYear>
-  <version>3.3.0-SNAPSHOT</version>
+  <version>3.4.0-SNAPSHOT</version>
 
   <packaging>pom</packaging>
 
@@ -25,11 +25,11 @@
   </modules>
 
   <properties>
-    <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
+    <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
     <!-- for SNAPSHOT versions ${camunda.version} and ${camunda-webapp-ee.version} will be the same, for released versions, the latter must be with -ee suffix -->
-    <camunda.version>7.11.0-SNAPSHOT</camunda.version>
-    <camunda-webapp-ee.version>${camunda.version}</camunda-webapp-ee.version>                     <!-- for SNAPSHOT versions -->
-    <!-- <camunda-webapp-ee.version>${camunda.version}-ee</camunda-webapp-ee.version> -->         <!-- for released versions -->
+    <camunda.version>7.12.0-SNAPSHOT</camunda.version>
+    <!--    <camunda-webapp-ee.version>${camunda.version}</camunda-webapp-ee.version>                      for released versions -->
+     <camunda-webapp-ee.version>${camunda.version}</camunda-webapp-ee.version>         <!-- for SNAPSHOT versions -->
 
     <version.java>1.8</version.java>
     <java.version>${version.java}</java.version>
@@ -66,7 +66,7 @@
         <version>2.2.4</version>
         <scope>test</scope>
       </dependency>
-      
+
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>

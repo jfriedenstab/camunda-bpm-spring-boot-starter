@@ -1,8 +1,9 @@
 /*
- * Copyright © 2015-2018 camunda services GmbH and various authors (info@camunda.com)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
+ * Copyright Camunda Services GmbH and/or licensed to Camunda Services GmbH
+ * under one or more contributor license agreements. See the NOTICE file
+ * distributed with this work for additional information regarding copyright
+ * ownership. Camunda licenses this file to you under the Apache License,
+ * Version 2.0; you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
@@ -15,6 +16,8 @@
  */
 package org.camunda.bpm.spring.boot.starter.util;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.core.env.PropertiesPropertySource;
 
@@ -23,9 +26,13 @@ import static org.camunda.bpm.spring.boot.starter.util.CamundaBpmVersion.key;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class CamundaBpmVersionTest {
 
-  private static final String CURRENT_VERSION = "7.11.0";
+  protected static String currentVersion;
 
   public static CamundaBpmVersion camundaBpmVersion(final String version) {
     final Package pkg = mock(Package.class);
@@ -33,16 +40,24 @@ public class CamundaBpmVersionTest {
     return new CamundaBpmVersion(pkg);
   }
 
+  @BeforeClass
+  public static void setUp() throws IOException {
+    InputStream is = CamundaBpmVersionTest.class.getResourceAsStream("/test.properties");
+    Properties p = new Properties();
+    p.load(is);
+    currentVersion = p.getProperty("camunda.version");
+  }
+
   @Test
-  public void current_version() {
+  public void currentVersion() {
     final CamundaBpmVersion version =  new CamundaBpmVersion();
     assertThat(version.isEnterprise()).isFalse();
-    assertThat(version.get()).startsWith(CURRENT_VERSION);
+    assertThat(version.get()).startsWith(currentVersion);
 
     final PropertiesPropertySource source = version.getPropertiesPropertySource();
     assertThat(source.getName()).isEqualTo("CamundaBpmVersion");
     final String versionFromPropertiesSource = (String) source.getProperty(key(CamundaBpmVersion.VERSION));
-    assertThat(versionFromPropertiesSource).startsWith(CURRENT_VERSION);
+    assertThat(versionFromPropertiesSource).startsWith(currentVersion);
     assertThat(source.getProperty(key(CamundaBpmVersion.FORMATTED_VERSION))).isEqualTo("(v" + versionFromPropertiesSource + ")");
     assertThat(source.getProperty(key(CamundaBpmVersion.IS_ENTERPRISE))).isEqualTo(Boolean.FALSE);
   }
